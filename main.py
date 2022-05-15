@@ -8,7 +8,7 @@ import numpy as np
 face_classifier = cv2.CascadeClassifier(r'C:\Users\Admin\Desktop\PythonProject\EmotionDetectionCNN\haarcascade_frontalface_default.xml')
 classifier =load_model(r'C:\Users\Admin\Desktop\PythonProject\EmotionDetectionCNN\model.h5')
 
-emotion_labels = ['Angry','Disgust','Fear','Happy','Neutral', 'Sad', 'Surprise']
+emotion_labels_2 = ['Disappointed','Bordem','Fear','Satisfactory','Engagement','Sad','Surprise']
 
 cap = cv2.VideoCapture(0)
 
@@ -33,7 +33,7 @@ while True:
             roi = np.expand_dims(roi,axis=0)
 
             prediction = classifier.predict(roi)[0]
-            label=emotion_labels[prediction.argmax()]
+            label=emotion_labels_2[prediction.argmax()]
             label_position = (x,y)
             cv2.putText(frame,label,label_position,cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
         else:
